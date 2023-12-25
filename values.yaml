@@ -1,0 +1,24 @@
+pvc:
+  namePvc: grafana-pvc
+  accessModes: ReadWriteOnce
+  storage: 1Gi
+
+
+deploy:
+  enabled: true
+  image: grafana/grafana:latest
+  imagePullPolicy: IfNotPresent
+  port: 3000
+  cpu: 250m
+  memory: 750Mi
+
+
+service:
+  enabled: true
+  nameService: grafana
+  portService: 3000
+  type: LoadBalancer
+
+ingress:
+  host: grafana-test.belarus-devops.app
+  port: 3000
